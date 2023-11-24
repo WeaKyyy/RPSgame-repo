@@ -7,10 +7,6 @@ import javax.swing.*;
 
 public class GameScreen extends JPanel implements Runnable {
 
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 3;
-
     final int originalTileSize = 32;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
