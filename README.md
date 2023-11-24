@@ -1,3 +1,3 @@
-# RPS src.main.Game: Battle Edition
+# RPS main.main.Game: Battle Edition
 
 The RPS (rock, paper, scissor) game is a strategy and player vs. player type of game with two teams goes to battle each other with three players each in five minutes time duration. Each player proceeds to each checkpoint, determining the battle of RPS that can last five seconds in each attempt. An attempt that whoever wins twice proceeds to the next checkpoint. A total of nine checkpoints and each checkpoint, whoever wins the round can accumalate points, the higher it goes the more points it can get and when it reaches the last checkpoint it will reset to the starting position (the middle checkpoint). Whenever a player loses the round, it wi0ll go behind a player that is assigned to be last to go up against the winning player of the opposing team. It will be a loop; each player would have their turns if a teammate lost the round, or your team member reaches the last checkpoint.
