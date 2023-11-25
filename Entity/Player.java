@@ -25,7 +25,7 @@ public class Player {
 
         x = 100;
         y = 100;
-        speed = 4;
+        speed = 8;
 
     }
 

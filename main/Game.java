@@ -16,7 +16,7 @@ public class Game extends JFrame{
         game.pack();
         game.setLocationRelativeTo(null);
         game.setVisible(true);
-        gameScreen.startGameThread();
+        //gameScreen.startGameThread();
 
     }
 }

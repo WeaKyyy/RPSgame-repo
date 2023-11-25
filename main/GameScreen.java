@@ -1,4 +1,5 @@
 package main;
+import Entity.Opponent;
 import Entity.Player;
 import input.KeyboardListener;
 
@@ -12,12 +13,15 @@ public class GameScreen extends JPanel implements Runnable {
     public final int tileSize = originalTileSize * scale;
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol;
-    final int screenHeight = tileSize * maxScreenRow;
+    public final int screenWidth = tileSize * maxScreenCol;
+    public final int screenHeight = tileSize * maxScreenRow;
 
     KeyboardListener key = new KeyboardListener();
+    private final double FPS = 60.0;
     Thread gameThread;
     Player player = new Player(this, key);
+    Opponent opponent = new Opponent(this);
+
     public GameScreen() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -28,19 +32,25 @@ public class GameScreen extends JPanel implements Runnable {
 
     }
 
+    @Override
+    public void addNotify () {
 
-    public void startGameThread () {
-
+        super.addNotify();
         gameThread = new Thread(this);
         gameThread.start();
     }
+
+//    public void startGameThread () {
+//
+//        gameThread = new Thread(this);
+//        gameThread.start();
+//    }
 
     @Override
     public void run() {
 
         long lastTime = System.nanoTime();
-        double fps = 60.0;
-        double ns = 1_000_000_000 / fps;
+        double ns = 1_000_000_000 / FPS;
         double delta = 0;
         long frames = 0;
         long timer = 0;
@@ -69,6 +79,7 @@ public class GameScreen extends JPanel implements Runnable {
     public void update() {
 
         player.update();
+        opponent.cycle();
     }
 
     @Override
@@ -77,6 +88,7 @@ public class GameScreen extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         player.paint(g2);
+        opponent.paint(g2);
         g2.dispose();
     }
 }
