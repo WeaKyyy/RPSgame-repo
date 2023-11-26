@@ -1,5 +1,7 @@
 package src.main;
+import src.managers.CheckPointManager;
 import src.managers.TileManager;
+import src.objects.CheckPoint;
 import src.sprite.Opponent;
 import src.sprite.Player;
 import src.input.KeyboardListener;
@@ -22,9 +24,10 @@ public class GameScreen extends JPanel implements Runnable {
     MyMouseListener mouse = new MyMouseListener();
     private final double FPS = 60.0;
     Thread gameThread;
-    TileManager m = new TileManager(this);
+    TileManager tileM = new TileManager(this);
     Player player = new Player(this, key);
     Opponent opponent = new Opponent(this);
+    CheckPointManager checkPointM = new CheckPointManager(this);
 
     public GameScreen() {
 
@@ -94,7 +97,8 @@ public class GameScreen extends JPanel implements Runnable {
 
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        m.paint(g2);
+        tileM.paint(g2);
+        checkPointM.paint(g2);
         player.paint(g2);
         opponent.paint(g2);
         g2.dispose();
