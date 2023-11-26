@@ -1,7 +1,9 @@
-package main;
-import Entity.Opponent;
-import Entity.Player;
-import input.KeyboardListener;
+package src.main;
+import src.managers.TileManager;
+import src.sprite.Opponent;
+import src.sprite.Player;
+import src.input.KeyboardListener;
+import src.input.MyMouseListener;
 
 import java.awt.*;
 import javax.swing.*;
@@ -11,14 +13,16 @@ public class GameScreen extends JPanel implements Runnable {
     final int originalTileSize = 32;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
 
     KeyboardListener key = new KeyboardListener();
+    MyMouseListener mouse = new MyMouseListener();
     private final double FPS = 60.0;
     Thread gameThread;
+    TileManager m = new TileManager(this);
     Player player = new Player(this, key);
     Opponent opponent = new Opponent(this);
 
@@ -28,6 +32,7 @@ public class GameScreen extends JPanel implements Runnable {
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(key);
+        this.addMouseListener(mouse);
         this.setFocusable(true);
 
     }
@@ -80,6 +85,8 @@ public class GameScreen extends JPanel implements Runnable {
 
         player.update();
         opponent.cycle();
+
+        Toolkit.getDefaultToolkit().sync();
     }
 
     @Override
@@ -87,6 +94,7 @@ public class GameScreen extends JPanel implements Runnable {
 
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        m.paint(g2);
         player.paint(g2);
         opponent.paint(g2);
         g2.dispose();

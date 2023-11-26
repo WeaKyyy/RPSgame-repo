@@ -1,6 +1,6 @@
-package Entity;
+package src.sprite;
 
-import main.GameScreen;
+import src.main.GameScreen;
 
 import java.awt.*;
 

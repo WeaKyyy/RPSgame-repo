@@ -1,7 +1,7 @@
-package Entity;
+package src.sprite;
 
-import input.KeyboardListener;
-import main.GameScreen;
+import src.input.KeyboardListener;
+import src.main.GameScreen;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
