@@ -1,4 +1,5 @@
 package src.main;
+import src.assets.CollisionChecker;
 import src.managers.CheckPointManager;
 import src.managers.TileManager;
 import src.objects.CheckPoint;
@@ -24,10 +25,11 @@ public class GameScreen extends JPanel implements Runnable {
     MyMouseListener mouse = new MyMouseListener();
     private final double FPS = 60.0;
     Thread gameThread;
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     Player player = new Player(this, key);
     Opponent opponent = new Opponent(this);
     CheckPointManager checkPointM = new CheckPointManager(this);
+    public CollisionChecker collisionChecker = new CollisionChecker(this);
 
     public GameScreen() {
 
@@ -87,7 +89,7 @@ public class GameScreen extends JPanel implements Runnable {
     public void update() {
 
         player.update();
-        opponent.cycle();
+        opponent.move();
 
         Toolkit.getDefaultToolkit().sync();
     }

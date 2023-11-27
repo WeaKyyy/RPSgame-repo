@@ -8,8 +8,11 @@ import java.awt.image.BufferedImage;
 
 public class Player {
 
-    private int x, y;
-    private int speed;
+    public int x, y;
+    public int speed;
+    public String direction;
+    public Rectangle solidArea;
+    public boolean collisionOn = false;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     GameScreen gs;
     KeyboardListener key;
@@ -18,30 +21,56 @@ public class Player {
 
         this.gs = gs;
         this.key = key;
+        solidArea = new Rectangle(10, 20, 30, 30);
         setDefaultValues();
     }
 
     public void setDefaultValues() {
 
-        x = 100;
-        y = 100;
+        x = 0;
+        y = 5 * gs.tileSize;
         speed = 8;
 
     }
 
     public void update() {
 
-        if (key.upPressed) {
-            y -= speed;
-        }
-        else if (key.downPressed) {
-            y += speed;
-        }
-        else if (key.leftPressed) {
-            x -= speed;
-        }
-        else if (key.rightPressed) {
-            x += speed;
+        if (key.upPressed || key.downPressed || key.leftPressed || key.rightPressed) {
+
+            if (key.upPressed) {
+                direction = "up";
+            } else if (key.downPressed) {
+                direction = "down";
+            } else if (key.leftPressed) {
+                direction = "left";
+            } else if (key.rightPressed) {
+                direction = "right";
+            }
+
+            collisionOn = false;
+            gs.collisionChecker.checkCollision(this);
+
+            if (!collisionOn) {
+
+                switch (direction) {
+
+                    case "up":
+                        y -= speed;
+                        break;
+
+                    case "down":
+                        y += speed;
+                        break;
+
+                    case "left":
+                        x -= speed;
+                        break;
+
+                    case "right":
+                        x += speed;
+                        break;
+                }
+            }
         }
     }
 

@@ -8,15 +8,19 @@ public class Opponent {
 
     private int x, y;
     private int speed;
-    private final int INITIAL_X = 1576;
-    private final int INITIAL_Y = 500;
+    private final int INITIAL_X;
+    private final int INITIAL_Y;
+    private int lastDir;
 
     GameScreen gs;
 
     public Opponent(GameScreen gs) {
 
         this.gs = gs;
+        INITIAL_X = 16 * gs.tileSize;
+        INITIAL_Y = 4 * gs.tileSize;
         setDefaultValues();
+        //lastDir = RIGHT;
     }
 
     public void setDefaultValues() {
@@ -26,7 +30,23 @@ public class Opponent {
         speed = 8;
     }
 
-    public void cycle() {
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+//    public int getSpeed_X() {
+//        return speed_X;
+//    }
+//
+//    public int getSpeed_Y() {
+//        return speed_Y;
+//    }
+
+    public void move() {
 
         x -= speed;
 
@@ -34,7 +54,17 @@ public class Opponent {
 
             setDefaultValues();
         }
+        //if (isNextTileRoad) {
+            // move opponent
+
+        //}
     }
+
+//    public boolean isNextileRoad() {
+//
+//        int newX = getX() + getSpeed_X();
+//        return true;
+//    }
 
     public void paint(Graphics2D g2) {
 
