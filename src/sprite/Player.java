@@ -6,13 +6,13 @@ import src.main.GameScreen;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Player {
+public class Player extends Entity {
 
-    public int x, y;
-    public int speed;
-    public String direction;
-    public Rectangle solidArea;
-    public boolean collisionOn = false;
+//    public int x, y;
+//    public int speed;
+//    public String direction;
+//    public Rectangle solidArea;
+//    public boolean collisionOn = false;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     GameScreen gs;
     KeyboardListener key;
@@ -22,6 +22,8 @@ public class Player {
         this.gs = gs;
         this.key = key;
         solidArea = new Rectangle(10, 20, 30, 30);
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         setDefaultValues();
     }
 
@@ -48,7 +50,9 @@ public class Player {
             }
 
             collisionOn = false;
-            gs.collisionChecker.checkCollision(this);
+            gs.collisionChecker.checkTileCollision(this); // CHECK TILE COLLISION
+            int objectIndex = gs.collisionChecker.checkObjectCollision(this, true); // CHECK OBJECT COLLISION
+            objectInteraction(objectIndex);
 
             if (!collisionOn) {
 
@@ -72,6 +76,10 @@ public class Player {
                 }
             }
         }
+    }
+
+    public void objectInteraction(int index) {
+
     }
 
     public void paint(Graphics2D g2) {

@@ -3,6 +3,7 @@ import src.assets.CollisionChecker;
 import src.managers.CheckPointManager;
 import src.managers.TileManager;
 import src.objects.CheckPoint;
+import src.objects.SuperCheckPoint;
 import src.sprite.Opponent;
 import src.sprite.Player;
 import src.input.KeyboardListener;
@@ -28,7 +29,8 @@ public class GameScreen extends JPanel implements Runnable {
     public TileManager tileM = new TileManager(this);
     Player player = new Player(this, key);
     Opponent opponent = new Opponent(this);
-    CheckPointManager checkPointM = new CheckPointManager(this);
+    public CheckPointManager checkPointM = new CheckPointManager(this);
+    public SuperCheckPoint[] scp = new SuperCheckPoint[7];
     public CollisionChecker collisionChecker = new CollisionChecker(this);
 
     public GameScreen() {
@@ -40,6 +42,11 @@ public class GameScreen extends JPanel implements Runnable {
         this.addMouseListener(mouse);
         this.setFocusable(true);
 
+    }
+
+    public void setupCheckPoint() {
+
+        checkPointM.setCheckPoint();
     }
 
     @Override
@@ -100,7 +107,11 @@ public class GameScreen extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         tileM.paint(g2);
-        checkPointM.paint(g2);
+        for (int i = 0; i < scp.length; i++) {
+            if (scp[i] != null) {
+                scp[i].paint(g2, this);
+            }
+        }
         player.paint(g2);
         opponent.paint(g2);
         g2.dispose();

@@ -4,7 +4,7 @@ import src.main.GameScreen;
 
 import java.awt.*;
 
-public class Opponent {
+public class Opponent extends Entity {
 
     private int x, y;
     private int speed;
@@ -19,6 +19,7 @@ public class Opponent {
         this.gs = gs;
         INITIAL_X = 16 * gs.tileSize;
         INITIAL_Y = 4 * gs.tileSize;
+        solidArea = new Rectangle(0, 0, 48, 48);
         setDefaultValues();
         //lastDir = RIGHT;
     }
