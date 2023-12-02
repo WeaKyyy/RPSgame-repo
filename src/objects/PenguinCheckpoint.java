@@ -7,6 +7,7 @@ public class PenguinCheckpoint extends SuperCheckPoint {
 
     public PenguinCheckpoint() {
 
+        title = "Novice Penguin";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/pixel_penguin.png"));
         }

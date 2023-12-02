@@ -6,6 +6,8 @@ import java.io.IOException;
 public class ThisGuyCheckPoint extends  SuperCheckPoint{
 
     public ThisGuyCheckPoint() {
+
+        title = "The GUY";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/res/pixel_thisGuy.png"));
         } catch (IOException e) {

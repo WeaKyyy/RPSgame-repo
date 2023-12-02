@@ -1,6 +1,6 @@
-package src.sprite;
+package src.sprites;
 
-import src.input.KeyboardListener;
+import src.inputs.KeyboardListener;
 import src.main.GameScreen;
 
 import java.awt.*;
@@ -80,6 +80,34 @@ public class Player extends Entity {
 
     public void objectInteraction(int index) {
 
+        if (index != 100) {
+            String object = gs.scp[index].title;
+
+            switch (object) {
+
+                case "Novice Penguin":
+                    gs.RPSInitiator();
+                    break;
+
+                case "Casual Dog":
+                    break;
+
+                case "Tryhard Ghost":
+                    break;
+
+                case "Self-proclaimed Pikachu":
+                    break;
+
+                case "Master Mr. Jaws":
+                    break;
+
+                case "Grandmaster Non-breathing fire Dragon":
+                    break;
+
+                case "The GUY":
+                    break;
+            }
+        }
     }
 
     public void paint(Graphics2D g2) {

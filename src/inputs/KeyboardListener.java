@@ -1,4 +1,4 @@
-package src.input;
+package src.inputs;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 public class KeyboardListener implements KeyListener {

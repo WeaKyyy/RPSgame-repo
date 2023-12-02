@@ -1,4 +1,4 @@
-package src.sprite;
+package src.sprites;
 
 import src.main.GameScreen;
 

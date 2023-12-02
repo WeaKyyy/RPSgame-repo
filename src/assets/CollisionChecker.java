@@ -1,7 +1,7 @@
 package src.assets;
 
 import src.main.GameScreen;
-import src.sprite.Entity;
+import src.sprites.Entity;
 
 public class CollisionChecker {
 
@@ -72,7 +72,7 @@ public class CollisionChecker {
 
     public int checkObjectCollision(Entity entity, boolean player) {
 
-        int index = 999;
+        int index = 100;
 
         for (int i = 0; i < gs.scp.length; i++) {
 

@@ -1,4 +1,4 @@
-package src.sprite;
+package src.sprites;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,4 +12,8 @@ public class Entity {
     public Rectangle solidArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+    public int score = 0;
+    public int win = 0;
+    public int total = 0;
+    public int tie = 0;
 }
