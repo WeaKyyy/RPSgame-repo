@@ -86,25 +86,31 @@ public class Player extends Entity {
             switch (object) {
 
                 case "Novice Penguin":
-                    gs.RPSInitiator();
+                    gs.gameState = gs.RPS;
                     break;
 
                 case "Casual Dog":
+                    gs.gameState = gs.RPS;
                     break;
 
                 case "Tryhard Ghost":
+                    gs.gameState = gs.RPS;
                     break;
 
                 case "Self-proclaimed Pikachu":
+                    gs.gameState = gs.RPS;
                     break;
 
                 case "Master Mr. Jaws":
+                    gs.gameState = gs.RPS;
                     break;
 
                 case "Grandmaster Non-breathing fire Dragon":
+                    gs.gameState = gs.RPS;
                     break;
 
                 case "The GUY":
+                    gs.gameState = gs.RPS;
                     break;
             }
         }

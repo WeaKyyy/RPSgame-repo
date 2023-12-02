@@ -141,37 +141,5 @@ public class TileManager {
                 y += gs.tileSize;
             }
         }
-
-//        g2.drawImage(tile[0].image, 0, 0, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 96, 0, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[1].image, 192, 0, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 288, 0, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 384, 0, gs.tileSize, gs.tileSize, null);
-//
-//        g2.drawImage(tile[0].image, 0, 96, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 96, 96, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[1].image, 192, 96, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 288, 96, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 384, 96, gs.tileSize, gs.tileSize, null);
-//
-//        g2.drawImage(tile[0].image, 0, 192, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 96, 192, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[1].image, 192, 192, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 288, 192, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 384, 192, gs.tileSize, gs.tileSize, null);
-//
-//        g2.drawImage(tile[0].image, 0, 288, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 96, 288, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[1].image, 192, 288, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 288, 288, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 384, 288, gs.tileSize, gs.tileSize, null);
-//
-//        g2.drawImage(tile[0].image, 0, 384, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 96, 384, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[1].image, 192, 384, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 288, 384, gs.tileSize, gs.tileSize, null);
-//        g2.drawImage(tile[0].image, 384, 384, gs.tileSize, gs.tileSize, null);
-
-
     }
 }
