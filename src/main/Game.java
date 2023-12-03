@@ -7,7 +7,7 @@ public class Game extends JFrame{
 
     public static void main(String[] args) {
 
-        JFrame game = new JFrame(); // creates a frame
+        JFrame game = new JFrame();
         game.setTitle("Hand Master");
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setResizable(false);

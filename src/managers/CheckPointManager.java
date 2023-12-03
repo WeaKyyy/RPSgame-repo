@@ -44,42 +44,5 @@ public class CheckPointManager {
         gs.scp[6] = new ThisGuyCheckPoint();
         gs.scp[6].x = 12 * gs.tileSize;
         gs.scp[6].y = gs.tileSize;
-
-//        checkPoint[1] = new CheckPoint();
-//        checkPoint[1].image = ImageIO.read(getClass().getResourceAsStream("/res/checkpointflag.png"));
-//        checkPoint[1].checkPoint_X = 12 * gs.tileSize;
-//        checkPoint[1].checkPoint_Y = gs.tileSize;
-//
-//            checkPoint[2] = new CheckPoint();
-//            checkPoint[2].image = ImageIO.read(getClass().getResourceAsStream("/res/checkpointflag.png"));
-//            checkPoint[2].checkPoint_X = 4 * gs.tileSize;
-//            checkPoint[2].checkPoint_Y = 5 * gs.tileSize;
-//
-//            checkPoint[3] = new CheckPoint();
-//            checkPoint[3].image = ImageIO.read(getClass().getResourceAsStream("/res/checkpointflag.png"));
-//            checkPoint[3].checkPoint_X = 5 * gs.tileSize;
-//            checkPoint[3].checkPoint_Y = 10 * gs.tileSize;
-//
-//            checkPoint[4] = new CheckPoint();
-//            checkPoint[4].image = ImageIO.read(getClass().getResourceAsStream("/res/checkpointflag.png"));
-//            checkPoint[4].checkPoint_X = 11 * gs.tileSize;
-//            checkPoint[4].checkPoint_Y = 10 * gs.tileSize;
-//
-//            checkPoint[5] = new CheckPoint();
-//            checkPoint[5].image = ImageIO.read(getClass().getResourceAsStream("/res/checkpointflag.png"));
-//            checkPoint[5].checkPoint_X = 12 * gs.tileSize;
-//            checkPoint[5].checkPoint_Y = 7 * gs.tileSize;
-//
-//            checkPoint[6] = new CheckPoint();
-//            checkPoint[6].image = ImageIO.read(getClass().getResourceAsStream("/res/checkpointflag.png"));
-//            checkPoint[6].checkPoint_X = 7 * gs.tileSize;
-//            checkPoint[6].checkPoint_Y = 4 * gs.tileSize;
-//    }
-//
-//    public void paint(Graphics2D g2) {
-//
-//        for (int num = 0; num < 7; num++) {
-//            g2.drawImage(checkPoint[num].image, checkPoint[num].checkPoint_X, checkPoint[num].checkPoint_Y, gs.tileSize, gs.tileSize, null);
-//        }
     }
 }
