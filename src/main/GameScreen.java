@@ -52,7 +52,7 @@ public class GameScreen extends JPanel implements Runnable {
     public void setupCheckPoint() {
 
         checkPointM.setCheckPoint();
-        gameState = MENU;
+        gameState = PLAY;
     }
 
     @Override

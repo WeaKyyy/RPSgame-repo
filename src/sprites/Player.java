@@ -3,12 +3,13 @@ package src.sprites;
 import src.inputs.KeyboardListener;
 import src.main.GameScreen;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Player extends SuperPlayer {
 
-    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     GameScreen gs;
     KeyboardListener key;
 
@@ -16,18 +17,38 @@ public class Player extends SuperPlayer {
 
         this.gs = gs;
         this.key = key;
-        solidArea = new Rectangle(10, 20, 30, 30);
+        solidArea = new Rectangle(0, 0, 48, 48);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         setDefaultValues();
+        getPlayerImages();
     }
 
     public void setDefaultValues() {
 
         x = 0;
         y = 5 * gs.tileSize;
-        speed = 8;
+        speed = 4;
+        direction = "right";
 
+    }
+
+    public void getPlayerImages() {
+
+        try {
+
+            up1 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Back2.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Back3.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Front2.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Front3.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Left2.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Left3.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Right2.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/res/Chara_Right3.png"));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void update() {
@@ -42,6 +63,17 @@ public class Player extends SuperPlayer {
                 direction = "left";
             } else if (key.rightPressed) {
                 direction = "right";
+            }
+
+            spriteCounter++;
+            if (spriteCounter > 12) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                }
+                else if (spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
             }
 
             collisionOn = false;
@@ -113,7 +145,49 @@ public class Player extends SuperPlayer {
 
     public void paint(Graphics2D g2) {
 
-        g2.setColor(Color.white);
-        g2.fillRect(x, y, gs.tileSize, gs.tileSize);
+//        g2.setColor(Color.white);
+//        g2.fillRect(x, y, gs.tileSize, gs.tileSize);
+        BufferedImage image = null;
+
+        switch (direction) {
+
+            case "up":
+                if (spriteNum == 1) {
+                    image = up1;
+                }
+                if (spriteNum == 2) {
+                    image = up2;
+                }
+                break;
+
+            case "down":
+                if (spriteNum == 1) {
+                    image = down1;
+                }
+                if (spriteNum == 2) {
+                    image = down2;
+                }
+                break;
+
+            case "left":
+                if (spriteNum == 1) {
+                    image = left1;
+                }
+                if (spriteNum == 2) {
+                    image = left2;
+                }
+                break;
+
+            case "right":
+                if (spriteNum == 1) {
+                    image = right1;
+                }
+                if (spriteNum == 2) {
+                    image = right2;
+                }
+                break;
+        }
+
+        g2.drawImage(image, x, y, 2 * gs.tileSize, 2 * gs.tileSize, null);
     }
 }
