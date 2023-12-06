@@ -14,7 +14,9 @@ import java.util.Map;
 
 public class UserInterface {
 
+    Game game;
     GameScreen gs;
+    JPanel mainScreenPanel;
     Font consolas_50;
     BufferedImage penguinImage, dogImage, ghostImage, pikachuImage, sharkImage, dragonImage, thisGuyImage;
     public boolean messageOn = false;
@@ -47,6 +49,12 @@ public class UserInterface {
 
         try {
             imageTitleScreen = ImageIO.read(getClass().getResourceAsStream("/res/titleScreen.png"));
+
+            imagePaper = ImageIO.read(getClass().getResourceAsStream("/res/0rps.png"));
+
+            imageScissors = ImageIO.read(getClass().getResourceAsStream("/res/1rps.png"));
+
+            imageRock = ImageIO.read(getClass().getResourceAsStream("/res/2rps.png"));
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -66,7 +74,7 @@ public class UserInterface {
         //g2.setFont(font);
         //g2.setColor(Color.white);
         //g2.drawString("Score: " + gs.player.score, 50, 50);
-
+        this.g2 = g2;
 
         if (gs.gameState == gs.LOGIN) {
             // Login state
@@ -79,9 +87,9 @@ public class UserInterface {
             paintTitleScreen();
         }
         if (gs.gameState == gs.MENU) {
-            // Menu state
-//            g2.setColor(Color.black);
-//            g2.fillRect(0, 0, gs.screenWidth, gs.screenHeight);
+            //Menu state
+            g2.setColor(Color.black);
+            g2.fillRect(0, 0, gs.screenWidth, gs.screenHeight);
             g2.drawImage(imageTitleScreen, 0, 0, gs.screenWidth, gs.screenHeight, null);
             paintMenuScreen();
         }
@@ -89,9 +97,7 @@ public class UserInterface {
             // Playing state
         }
         if (gs.gameState == gs.RPS) {
-            g2.setFont(consolas_50);
-            g2.setColor(Color.white);
-            g2.drawImage(penguinImage, 16 * gs.tileSize, gs.tileSize, 100, 100, null);
+            g2.drawImage(penguinImage, 13 * gs.tileSize, 2 / gs.tileSize, 200, 200, null);
             paintRPSScreen();
         }
     }
@@ -183,19 +189,15 @@ public class UserInterface {
     }
 
     public void paintMenuScreen() {
-        // From Suha
+
         playButton = new JButton("Play Game");
         playButton.setSize(200, 100);
         playButton.setLocation(6 * gs.tileSize + 50, 7 * gs.tileSize);
 
-        // Add action listener to "Play Game" button
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Add your game logic here
-                // Right now it only prints a message
                 gs.gameState = gs.PLAY;
-
             }
         });
 
@@ -204,47 +206,35 @@ public class UserInterface {
         exitButton.setSize(200, 100);
         exitButton.setLocation(6 * gs.tileSize + 50, 8 * gs.tileSize);
 
-        // Add action listener to "Exit" button
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Exit the application when the "Exit" button is clicked
                 System.exit(0);
             }
         });
 
-        // Add buttons to the panel
         gs.add(playButton);
         gs.add(exitButton);
+
     }
 
     public void paintRPSScreen() {
 
-//        g2.setColor(Color.black);
-//        g2.fillRect(0, 0, gs.screenWidth, gs.screenHeight);
+        Image paper = imagePaper.getScaledInstance(280, 300, Image.SCALE_SMOOTH);
+        btn_paper = new JButton(new ImageIcon(paper));
+        btn_paper.setBackground(Color.red);
+        btn_paper.setBounds(gs.tileSize, 4 * gs.tileSize, 300, 325);
 
-        try {
-            imagePaper = ImageIO.read(getClass().getResourceAsStream("/res/0rps.png"));
-            Image paper = imagePaper.getScaledInstance(280, 300, Image.SCALE_SMOOTH);
-            btn_paper = new JButton(new ImageIcon(paper));
-            btn_paper.setBackground(Color.red);
-            btn_paper.setBounds(gs.tileSize, 4 * gs.tileSize, 300, 325);
+        Image scissors = imageScissors.getScaledInstance(280, 300, Image.SCALE_SMOOTH);
+        btn_scissors = new JButton(new ImageIcon(scissors));
+        btn_scissors.setBackground(Color.yellow);
+        btn_scissors.setBounds(6 * gs.tileSize, 4 * gs.tileSize, 300, 325);
 
-            imageScissors = ImageIO.read(getClass().getResourceAsStream("/res/1rps.png"));
-            Image scissors = imageScissors.getScaledInstance(280, 300, Image.SCALE_SMOOTH);
-            btn_scissors = new JButton(new ImageIcon(scissors));
-            btn_scissors.setBackground(Color.yellow);
-            btn_scissors.setBounds(6 * gs.tileSize, 4 * gs.tileSize, 300, 325);
+        Image rock = imageRock.getScaledInstance(280, 300, Image.SCALE_SMOOTH);
+        btn_rock = new JButton(new ImageIcon(rock));
+        btn_rock.setBackground(Color.blue);
+        btn_rock.setBounds(11 * gs.tileSize, 4 * gs.tileSize, 300, 325);
 
-            imageRock = ImageIO.read(getClass().getResourceAsStream("/res/2rps.png"));
-            Image rock = imageRock.getScaledInstance(280, 300, Image.SCALE_SMOOTH);
-            btn_rock = new JButton(new ImageIcon(rock));
-            btn_rock.setBackground(Color.blue);
-            btn_rock.setBounds(11 * gs.tileSize, 4 * gs.tileSize, 300, 325);
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
 
         gs.add(btn_paper);
         gs.add(btn_scissors);
@@ -309,11 +299,18 @@ public class UserInterface {
         }
 
         JLabel label_result = new JLabel(label_choice + label_winner);
-        label_result.setBounds(150, 10, 300, 35);
+        label_result.setForeground(Color.white);
+        label_result.setBounds(7 * gs.tileSize, gs.tileSize, 300, 100);
         gs.add(label_result);
 
+//        g2.setFont(consolas_50);
+//        g2.setColor(Color.white);
+//        g2.drawString(label_choice + " " + label_winner, 25, 50);
+//        g2.drawString("Human's Choice", 4 * gs.tileSize, 10 * gs.tileSize);
+
         JLabel label_title_human = new JLabel("Human's Choice");
-        label_title_human.setBounds(50, 35, 150, 35);
+        label_title_human.setForeground(Color.white);
+        label_title_human.setBounds(50, 35, 150, 100);
         gs.add(label_title_human);
 
         JLabel label_title_computer = new JLabel("Computer's Choice");

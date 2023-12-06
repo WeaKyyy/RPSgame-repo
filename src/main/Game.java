@@ -4,20 +4,27 @@ import javax.swing.JFrame;
 
 public class Game extends JFrame{
 
+    public Game() {
 
-    public static void main(String[] args) {
+        initGame();
+    }
 
-        JFrame game = new JFrame();
-        game.setTitle("Hand Master");
-        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        game.setResizable(false);
+    public void initGame() {
+
+        setTitle("Hand Master");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         GameScreen gameScreen = new GameScreen();
-        game.add(gameScreen);
-        game.pack();
-        game.setLocationRelativeTo(null);
-        game.setVisible(true);
+        add(gameScreen);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
         gameScreen.setupCheckPoint();
         //gameScreen.startGameThread();
+    }
+    public static void main(String[] args) {
+
+        Game game = new Game();
 
     }
 }

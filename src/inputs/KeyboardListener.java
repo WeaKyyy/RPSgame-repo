@@ -1,9 +1,17 @@
 package src.inputs;
+import src.main.GameScreen;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 public class KeyboardListener implements KeyListener {
 
+    GameScreen gs;
     public boolean upPressed, downPressed, leftPressed, rightPressed;//, upArrow, downArrow, leftArrow, rightArrow;
+
+    public KeyboardListener(GameScreen gs) {
+
+        this.gs = gs;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -26,6 +34,14 @@ public class KeyboardListener implements KeyListener {
         }
         if (keyCode == KeyEvent.VK_D || keyCode == KeyEvent.VK_RIGHT) {
             rightPressed = true;
+        }
+        if (keyCode == KeyEvent.VK_F10) {
+            if (gs.gameState == gs.PLAY) {
+                gs.gameState =gs.PAUSE;
+            }
+            else if (gs.gameState == gs.PAUSE) {
+                gs.gameState = gs.PLAY;
+            }
         }
     }
 

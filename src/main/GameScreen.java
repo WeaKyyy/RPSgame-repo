@@ -20,7 +20,7 @@ public class GameScreen extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenRow;
 
-    KeyboardListener key = new KeyboardListener();
+    KeyboardListener key = new KeyboardListener(this);
     MyMouseListener mouse = new MyMouseListener();
     private final double FPS = 60.0;
     Thread gameThread;

@@ -28,7 +28,7 @@ public class Player extends SuperPlayer {
 
         x = 0;
         y = 5 * gs.tileSize;
-        speed = 4;
+        speed = 8;
         direction = "right";
 
     }
@@ -145,8 +145,6 @@ public class Player extends SuperPlayer {
 
     public void paint(Graphics2D g2) {
 
-//        g2.setColor(Color.white);
-//        g2.fillRect(x, y, gs.tileSize, gs.tileSize);
         BufferedImage image = null;
 
         switch (direction) {
@@ -188,6 +186,6 @@ public class Player extends SuperPlayer {
                 break;
         }
 
-        g2.drawImage(image, x, y, 2 * gs.tileSize, 2 * gs.tileSize, null);
+        g2.drawImage(image, x, y, 4 * gs.tileSize, 4 * gs.tileSize, null);
     }
 }
